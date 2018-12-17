@@ -100,4 +100,26 @@ Dockerが目指しているのはアプリケーションをどこでも実行�
 Dockerイメージは読み込み専用のイメージレイヤの積み重ねで構成されている
 - 概念としては、親子関係を持つ複数のレイヤが透過的に重なり、１つのファイルシステムを形成している
 
-# 5章: 
+# 5章: Dockerインフラの安定運用
+## Dockerのシステム管理コマンド
+Dockerを使い続けていると一番最初に課題になるのがディスク容量
+- docker system df 
+    - Dockerが使用してるシステム上の容量を表示
+- docker container prune
+    - 不要なコンテナを削除
+- docker image prune
+    - 不要なイメージを削除
+- docker system prune
+    - 不要なデータをすべて削除
+
+## Dockerのストレージドライバ
+Dockerのimage操作にあたり、サーバー上において実際の処理を制御するのはストレージドライバの役割
+- CentOS系: overlay
+- Ubuntu系: aufs
+
+利用しているDockerでどのすtレージドライバを使用しているかは docker system infoを実行するとわかる
+
+## Dockerイメージの更新
+Dockerfileでlatestタグを使用していると、思わぬときにバージョンアップが走り、システム上のトラブルになりうるので注意する必要がある
+
+
