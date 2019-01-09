@@ -158,6 +158,18 @@ AWSやAzureにもKubernetesのマネージドサービスがある
 - Kubernetes: Swarmより機能が充実したコンテナオーケストレーションシステムでDockerを始めとする様々なコンテナランタイムを扱える
     - Compose/Stack/Swarmの機能を統合しつつ、より高度に管理できるもの
 
+## 5.3 Kubernetesの概念
+Kubernetesで実行されるアプリケーションは様々なリソースと協調して動作することで成立している (リソース: Node, Namespace,Podといった構成要素。コンテナとリソースは別の粒度)  
+リソース
+- Node: Kubernetesクラスタで実行するコンテナを配置するためのサーバ
+- Namespace: Kubernetesクラスタ内で作る仮想的なクラスタ
+- Pod: コンテナの集合単位でコンテナを実行する方法を定義する
+- Service: Podの集合にアクセスするための経路を定義するy
+- その他: いろいろ
+
+
+
+
 
 
 
