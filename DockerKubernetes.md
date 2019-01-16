@@ -190,6 +190,43 @@ Podをどのような粒度にすべきかと悩む場合は同一Nodeに配置�
 - リバースプロキシとしてのNginxとその背後のアプリケーションで1つのPodにするのはよくあるパターン
 - 同時にデプロイしないと整合性が保てないようなケースにおいて、同一のPodでコンテナをひとまとめにしてしまうのはデプロイ戦略として有効
 
+## 5.7 ReplicaSet
+Podを定義したマニフェストファイルからは1つのPodしか作成できない  
+しかしある程度の規模になると同一のPodを複数実行することで可用性を高めることが必要になる  
+そのような場合ReplicaSetを利用するReplicaSetは
+- 同じ仕様のPodを複数作成、管理するためのリソース
+- ReplicaSetを操作して削除されたPodは復元できないため、Webアプリケーションのようなステートレスな性質を持つPodの利用に向いている
+
+## 5.8 Deployment
+- ReplicaSetよりも上位のリソース
+- アプリケーションデプロイの基本単位となるリソース
+- ReplicaSetを管理・操作するためのリソース
+
+実はDeploymentの定義はReplicaSetと変わらないが、DeploymentはReplicaSetの世代管理ができる
+
+### 5.8.1 ReplicaSetのライフサイクル
+KubernetesはDeploymentを1つの単位としてアプリケーションをデプロイする  
+- 実運用では、ReplicaSetを直接用いることは少なく、Deploymentのマニフェストファイルを扱うことがほとんど
+- ロールバックが可能なのでなにかあればすぐに戻せる
+
+## 5.9 Service
+Podの集合(主にReplicaSet)に対する経路やサービスディスカバリを提供するためのリソース  
+
+Serviceには様々な種類がある
+- ClusterIP Service
+    - デフォルトはClusterIP Service
+    - クラスタ上の内部IPアドレスにServiceを公開でき、Service名で名前解決できる
+    - 外からはアクセスできない
+- NodePort Service
+    - クラスタ外からアクセスできる
+    - ClusterIPを作成できる点はClusterIP Serviceと同じ
+- LoadBalancer Service
+    - ローカル開発環境では利用できない
+    - クラウドプラットフォームで提供されているロードバランサーと連携するためのもの
+- ExternalName Service
+    - selectorもport定義も持たない特殊なService
+    - Kubernetesクラスタ内から外部のホストを解決するためのエイリアスを提供
+
 
 
 
