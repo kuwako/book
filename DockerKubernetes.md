@@ -227,6 +227,20 @@ Serviceには様々な種類がある
     - selectorもport定義も持たない特殊なService
     - Kubernetesクラスタ内から外部のホストを解決するためのエイリアスを提供
 
+## 5.10 Ingress
+Serviceでの外部公開はL4層レベルまでしか扱えないため、HTTP/HTTPSのようにパスベースで転送先のServiceを切り替えるといったL7層レベルの制御はできない  
+IngressであればServiceのKubernetesクラスタの外への公開とVirtualHostやパスベースでの高度なHTTPルーティングを両立する  
+
+
+
+
+
+
+
+
+
+
+
 
 
 
