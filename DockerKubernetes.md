@@ -231,7 +231,19 @@ Serviceには様々な種類がある
 Serviceでの外部公開はL4層レベルまでしか扱えないため、HTTP/HTTPSのようにパスベースで転送先のServiceを切り替えるといったL7層レベルの制御はできない  
 IngressであればServiceのKubernetesクラスタの外への公開とVirtualHostやパスベースでの高度なHTTPルーティングを両立する  
 
+# 6章: Kubernetesのデプロイ・クラスタ構築
+コンテキストをスイッチするのにkubectxが便利
 
+## 6.3 Master Slave構成のMySQLをGKE上に構築する
+Kubernetesではホストから分離可能な外部ストレージをボリュームとして使用する
+- Podが別のホストに再配置された場合は外部ストレージとしてのボリュームはデプロイされたホストに自動的に割り当てられる
+- これによってホストとデータボリュームが別れて便利になる
+
+この仕組を実現するのが以下のリソース
+- PersistentVolume
+- PersistentVolumeClaim
+- StorageClass
+- StatfulSet
 
 
 
