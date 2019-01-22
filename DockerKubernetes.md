@@ -245,6 +245,35 @@ Kubernetesではホストから分離可能な外部ストレージをボリュ�
 - StorageClass
 - StatfulSet
 
+### persistentVolumeとPersistentVolumeClaim
+ストレージ確保のためのリソース  
+- クラスタが構築されているプラットフォームに対応した永続ボリュームを作成する
+
+PersistentVolume
+- ストレージの実体
+- GCPではGCEPersistentDiskがそれにあたる
+
+PersistentVolumeClaim
+- ストレージを論理的に抽象化したリソース
+- PersistentVolumeに対して必要な容量を動的に確保
+
+### StorageClass
+PersistentVolumeが確保するストレージの種類を定義できるリソース  
+GCPのストレージには標準とSSDがある
+
+### StatefulSet
+データストアのように継続的にデータを永続化するステートフルなアプリの管理に向いているリソース
+- deploymentと似ているが、一意性をもつPodや永続化データをもつ必要のないステートレスなアプリに向いている
+    - deploymentと違い、連番で一意な識別子が振られる
+- ステートフルなReplicaSetという位置付け
+
+
+
+
+
+
+
+
 
 
 
