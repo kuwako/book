@@ -267,7 +267,7 @@ GCPのストレージには標準とSSDがある
     - deploymentと違い、連番で一意な識別子が振られる
 - ステートフルなReplicaSetという位置付け
 
-
+# 7章 Kubernetesの発展的な利用
 
 
 
