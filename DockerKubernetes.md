@@ -283,7 +283,18 @@ GCPのストレージには標準とSSDがある
 ### 7.1.3 Secret
 TLS/SSL証明書や秘密鍵やパスワードを平文で扱うのは危ないので、機密情報をbase64エンコードした状態で扱える
 
+## 7.2 ユーザー管理とRole-Based Access Control(RBAC)
+Kubernetesのユーザーは以下2つの概念がある
+- 認証ユーザー
+    - クラスタ外からKubernetesを操作するためのユーザーで、様々な方法で認証される
+    - kubectl等でKubernetesを操作するためのもの
+    - ユーザーをグループ化するグループという概念も存在
+- ServiceAccount
+    - Kubernetes内部で管理され、Pod自身がKubernetesAPIを操作するためのユーザー
+    - Kubernetesリソースとして提供
+    - ServiceAccountと紐付けられたPodは与えられた権限の範囲内でKubernetesの操作が可能
 
+### 7.2.1 RBACを利用して権限制御を実現する
 
 
 
