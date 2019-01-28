@@ -295,6 +295,11 @@ Kubernetesのユーザーは以下2つの概念がある
     - ServiceAccountと紐付けられたPodは与えられた権限の範囲内でKubernetesの操作が可能
 
 ### 7.2.1 RBACを利用して権限制御を実現する
+RBACでの権限制御は以下の2つで成立している
+- KubernetesAPIのどの操作が可能であるかを定義したロール
+- 認証ユーザー・グループ・ServiceAccountとロールのヒモ付け
+
+### 7.2.2 ServiceAccount
 
 
 
