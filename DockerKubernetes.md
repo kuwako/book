@@ -322,8 +322,16 @@ Helmリポジトリ
     - 安定した品質のもの
 - incubator
     - チャレンジングな設定
-### 7.3.5 RBACに対応したアプリケーションをインストールする
 
+## 7.4 Kubernetesにおけるデプロイ戦略
+DockerContainerでのデプロイは書くサーバーがDockerイメージを取得するぷる型のデプロイであるため、デプロイやスケールアウトは容易  
+デプロイの基礎的な部分がDockerとContainerオーケストレーションに含まれているため、これまでのような手間を変える必要がなくなってきた  
+
+### 7.4.1 RollingUpdate
+Deploymentでは新しいポッドに置き換えるための戦略を .spec.strategy.type で指定する(RollingUpdate or Recreate)  
+- RollingUpdateは古いバージョンのアプリケーションを実行した状態で新しいバージョンのアプリケーションを起動し、準備ができたものから順にサービスインする仕組み
+
+#### RollingUpdateの挙動を制御する
 
 
 
