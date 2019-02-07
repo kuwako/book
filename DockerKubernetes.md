@@ -332,7 +332,14 @@ Deploymentでは新しいポッドに置き換えるための戦略を .spec.str
 - RollingUpdateは古いバージョンのアプリケーションを実行した状態で新しいバージョンのアプリケーションを起動し、準備ができたものから順にサービスインする仕組み
 
 #### RollingUpdateの挙動を制御する
+maxUnavailable
+- Rollingupdateの際に同時に削除できるPodの最大数
+- 割合(%)で指定することも可能
 
+maxSurge
+- Rollingupdate実施時に新しいPodを作る個数
+- defaultはreplicasの25%
+- 増やせばすぐに切り替えできて良いが、瞬間的に必要なリソースは増える
 
 
 
