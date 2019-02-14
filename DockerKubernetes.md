@@ -357,6 +357,44 @@ RollingUpdateは強力な仕組みだが、新旧Podが混在する瞬間が生�
 - これを解決する仕組みの一つとしてBlueGreen Deploymentが存在する
     - 新旧バージョンそれぞれ2系統のサーバ郡を切り替えてデプロイする方法
 
+# 8章: Containerの運用
+## 8.1 ロギングの運用
+### 8.1.1 Containerにおけるロギング
+従来型ロギング
+- ログがどんどんたまり、ログローテートが必須
+
+Docker
+- ファイルではなく標準出力に出し、Fluentdなどのログコレクタで収集することが多い
+- Container内の標準出力が自動的にjsonファイルになっているので、ログ出力を完全にDockerに任せることも可能
+- logging driverのおかげで出力できている(json以外のフォーマットも選択可能)
+    - json
+    - syslog
+    - journald
+    - awslogs
+    - gcplogs
+    - fluentd
+
+### 8.1.2 Containerログの運用
+Container内でログを出力する方法は、障害で予期せずContainerが止まった場合にログごと消えてしまうので良くない  
+Containerのログローテートをするために --max-size や --max-file を指定できる
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
