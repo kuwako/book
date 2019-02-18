@@ -378,8 +378,19 @@ Docker
 Container内でログを出力する方法は、障害で予期せずContainerが止まった場合にログごと消えてしまうので良くない  
 Containerのログローテートをするために --max-size や --max-file を指定できる
 
+### 8.1.4 fluentd logging driverの運用イメージ
+#### fluentdは各ホストへ配置し、常に健康な状態に保つ
+fluentdを各Dockerホストのエージェント的に配置し、Docker logging driverで利用すると良い
+- 分散型のメリット
+    - ホスト障害で影響を受ける範囲を限定できる
+- 集約型のデメリット
+    - 冗長化を手厚くする必要がある
+    - ホスト数やログの数に見合ったfluentdを用意するのは大変
 
-
+fluentd監視で中止すべき点
+- buffer_queue_length: バッファに保持されているchunkの数
+- buffet_total_queued_size: バッファに保持されているchunkの数
+- retry_count: リトライの回数
 
 
 
