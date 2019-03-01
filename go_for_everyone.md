@@ -75,3 +75,17 @@ OSが外部からプロセスに割り込みを与えるための機構にシグ
 - SIGINT: ユーザーにctrl + C で止められた場合
 
 シグナルを取り扱うには os/signal パッケージのos.Signal型の値を取り扱う channel を作成してsignal.Notifyに与える
+
+### 3.9 goroutineの停止
+goroutineの起動はgo doSomething()としてできる  
+goroutineに停止にはチャンネルを使用 or contextパッケージ(ver1.7~)がある
+
+#### チャンネルを使用する方法
+チャンネルを送信側でcloseするとそのチャンネルから受信した場合に第二の値がfalseになるので、それを見てreturnするようにする
+
+#### contextパッケージを使用する方法
+context.withChannelで返されるcontextをgoroutineに渡し、閉じたいタイミングでcancel()を実行する
+
+## 4. コマンドラインツールを作る
+
+
