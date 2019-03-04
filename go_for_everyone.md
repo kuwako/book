@@ -87,5 +87,13 @@ goroutineに停止にはチャンネルを使用 or contextパッケージ(ver1.
 context.withChannelで返されるcontextをgoroutineに渡し、閉じたいタイミングでcancel()を実行する
 
 ## 4. コマンドラインツールを作る
+### なぜGoを使うのか
+- 配布が簡単
+- パフォーマンスが良い
 
+### 4.3 flagパッケージ
+flagパッケージを使えば、簡単にCLIツール実行時のオプション引数を実装できる
+- 例) var port = flag.Int("port", defaultPort, "use")
+
+## 5. The Dark Arts Of Reflection
 
