@@ -26,6 +26,18 @@ pがポインタ型変数で \*Person がポインタ型
 
 
 ## 構造体
+a := new(Animal) は a := &Animal{} と同じ  
+
+ただし、&Animal{}は一行で初期化できるが new(Animal)はできない  
+- a1 := &Animal{"hoge", 5} => ok  
+- a2 := new(Animal{"hoge", 5}) => error (Animal literal is not a type)
+
+
+### 初期化
+- a := Animal{"hoge", 5} => ok  
+- a := Animal{"hoge"} => error  
+- a := Animal{Name: "hoge", Age: 5} => ok  
+- a := Animal{Name: "hoge"} => ok (Ageは0で初期化される)  
 
 ## 配列/スライス
 
