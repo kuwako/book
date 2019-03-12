@@ -57,3 +57,8 @@ func Get()
 - 暗黙的型変換によって関数呼び出しが多少便利になる代わりに、呼び出しできないケースについて気をつけながらコードを書いていくのは割に合わない
 
 [詳細](https://qiita.com/nirasan/items/02e88c3ba64c444fa527)
+
+## Goの同じディレクトリの中に別のパッケージは入れられない (\_test.goを除く)
+https://stackoverflow.com/questions/14416275/error-cant-load-package-package-my-prog-found-packages-my-prog-and-main
+- それぞれのpackageは各自のディレクトリで定義されなければならない
+- パッケージは、公開、インポート、URLからの取得など、複数のプログラムで使用できるコンポーネントです。したがって、プログラムがディレクトリを持つことができるのと同じくらい独自のディレクトリを持つことは理にかなっています。 
