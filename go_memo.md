@@ -23,6 +23,10 @@ pがポインタ型変数で \*Person がポインタ型
 - 紛らわしいが、\*p自体も変数なのでこれに代入することも可能
 
 ## インターフェース
+Jack氏: "Accept interfaces, return structs"
+- パッケージでは処理する側でinterfaceを定義し引数として受け取り、New関数の戻り値など外部にわたすものはstructのように具体的な型にすべき
+- オブジェクト指向ではカプセル化だが、Goのインターフェースは実装を隠すのでなく実装に依存しない
+- https://qiita.com/weloan/items/de3b1bcabd329ec61709
 
 
 ## 構造体
