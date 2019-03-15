@@ -96,4 +96,42 @@ flagパッケージを使えば、簡単にCLIツール実行時のオプショ�
 - 例) var port = flag.Int("port", defaultPort, "use")
 
 ## 5. The Dark Arts Of Reflection
+### 5.1 動的な型の判別
+ユーザーから与えられた任意の値をバリデートする関数があった場合、すべての値に対応せざるを得ない場合もある
+```
+func validation(x interface{}) error {
+    ...
+}
+```
+
+また、interface{}を受け取り、\*os.Fileに変換するような関数で変換に失敗した場合などはこうする
+```
+func HundleData(x interface{}) {
+    f, ok = x.(*os.File)
+    if !ok {
+        ...
+    }
+    ...
+}
+```
+
+型アサーションを使って型ごとのswitch文も書ける
+```
+func HundleData(x interface{}) {
+    switch x.(type) {
+        case int:
+            ...
+        case string:
+            ...
+        default:
+            ...
+    } 
+}
+```
+
+ただし、この方法には欠点がある
+- 型アサーションではアサーションする型名を事前に知っておく必要があるので選択肢が限定されている必要がある
+- アサーションに利用する型は完全な型でないといけない
+
+この場合、Goで扱われる値・型の構造を動的に調べたり操作できるreflectパッケージを利用する
 
