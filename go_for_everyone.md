@@ -135,3 +135,11 @@ func HundleData(x interface{}) {
 
 この場合、Goで扱われる値・型の構造を動的に調べたり操作できるreflectパッケージを利用する
 
+### 5.2 reflectパッケージ
+rv := reflect.ValueOf(p) のような使い方で型情報や格納されている値などを得ることができる
+
+#### reflect.Value
+reflectを使って行う操作の基本はすべてreflect.Value型を通して行われる
+- reflect.ValueOfはGoで利用できるすべての値に対応するメソッドを備えているが、実行時にそれが不正な呼び出しかどうかは呼び出し側で確認する必要がある
+
+## 6. test
