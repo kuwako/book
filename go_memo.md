@@ -28,6 +28,12 @@ Jack氏: "Accept interfaces, return structs"
 - オブジェクト指向ではカプセル化だが、Goのインターフェースは実装を隠すのでなく実装に依存しない
 - https://qiita.com/weloan/items/de3b1bcabd329ec61709
 
+### 意図せずinterfaceのポインタを使わないように気をつける
+ついなんでもpointerでやってしまいがちだが、interfaceのpointerを使おうとすると不便なことになる
+- 例) [[教えて]Go言語:なぜインターフェイスはポインタにできない?](https://qiita.com/suin/items/68ed7020d21dca047a73)
+- https://eel3.hatenablog.com/entry/20140915/1410788174
+- http://otiai10.hatenablog.com/entry/2014/05/27/223556
+
 
 ## 構造体
 a := new(Animal) は a := &Animal{} と同じ  
