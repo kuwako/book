@@ -632,7 +632,20 @@ Google が目指しているのは、適切な学習の機会を適切な従業�
     - 仮説に基づく質問は、将来の状況への対応を評価するために使用
     - 仮説に基づく質問は、応募者が新しい状況にどのように対応するかを確認できる
 
-https://rework.withgoogle.com/jp/guides/hiring-use-structured-interviewing/steps/understand-behavioral-vs-hypothetical-questions/
+### 難問奇問を避ける
+- ボーイング 747 の中にゴルフボールはいくつ収まりますか？
+- もしあなたが 5 セント硬貨と同じ大きさに縮んで、ミキサーに入れられたとしたら、どうやって脱出しますか？
+
+といった難問奇問を出題していたが、面接時のスコアとそれ以降のパフォーマンススコアを比較し、難問奇問による予測能力を詳しく検証した結果、このような質問に対して見られた能力は、好意的に解釈しても、訓練を通じて向上できるようなスキルであることがわかった
+
+- 質問が的外れであるから
+- もう 1 つは一般的な認知能力と、難問奇問を解くための能力との間に相関関係がないから
+
+## 有意義な応募者体験を提供する
+
+
+https://rework.withgoogle.com/jp/guides/hiring-shape-the-candidate-experience/steps/introduction/
+
 
 
 
