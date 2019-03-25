@@ -28,6 +28,12 @@ Jack氏: "Accept interfaces, return structs"
 - オブジェクト指向ではカプセル化だが、Goのインターフェースは実装を隠すのでなく実装に依存しない
 - https://qiita.com/weloan/items/de3b1bcabd329ec61709
 
+### 意図せずinterfaceのポインタを使わないように気をつける
+ついなんでもpointerでやってしまいがちだが、interfaceのpointerを使おうとすると不便なことになる
+- 例) [[教えて]Go言語:なぜインターフェイスはポインタにできない?](https://qiita.com/suin/items/68ed7020d21dca047a73)
+- https://eel3.hatenablog.com/entry/20140915/1410788174
+- http://otiai10.hatenablog.com/entry/2014/05/27/223556
+
 
 ## 構造体
 a := new(Animal) は a := &Animal{} と同じ  
@@ -59,6 +65,9 @@ func Get()
 - Go の関数のレシーバは呼び出し元がアドレス指定可能であれば、値型とポインタ型の間で暗黙の型変換が行われ、簡略な記述で呼び出すことができる
 - 型変換が行われないのは、主に呼び出し元が値型でマップやインターフェイスの要素であった場合
 - 暗黙的型変換によって関数呼び出しが多少便利になる代わりに、呼び出しできないケースについて気をつけながらコードを書いていくのは割に合わない
+- 実体がポインタレシーバのメソッドfunc (ap \*a) hogeHoge ()を呼び出すときって
+    - a.hogeHoge() は暗黙変換されて、実際は
+    - (&a).hogeHoge() を実行している
 
 [詳細](https://qiita.com/nirasan/items/02e88c3ba64c444fa527)
 
