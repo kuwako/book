@@ -164,7 +164,13 @@ goのtestへの戦略は「明示」、そして「シンプル」
 - go test -bench で実行可能
 
 ### 6.4 テストの実践的なテクニック
-
+- TableDrivenTests
+- reflect.DeepEqualを使う
+    - 大きい配列などを比較する際にすべてforで回すのは大変なのでreflext.DeepEqualを使うと良い
+- Race Detectorを使って競合状態を検出する
+    - 複数のgoroutineから同じ変数にアクセスしていて、少なくともどれか一つに書き込みをした場合に発生する競合を検出できる
+    - go run -race mypkg
+    - go build -race mypkg
 
 
 
