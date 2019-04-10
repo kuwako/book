@@ -14,5 +14,5 @@
 - 動的なパスでHTTPのエンドポイントを提供する
 - Gomniauthを使って認証をする
 - Websocket上でjsonの受け渡しをする
-
+- objx: Cookieに入れる情報をBase64形式で扱うことをサポートするパッケージ
 
