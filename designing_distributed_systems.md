@@ -187,3 +187,7 @@ etcd/ZooKeeper/Consulなどの分散ストレージがマスタ選出のコン�
 
 イベントが複雑になってきたらpub/subを導入するといい
 - Apache Kafkaとか
+
+## 12章: 協調的バッチ処理
+- 結合
+- Reduce
