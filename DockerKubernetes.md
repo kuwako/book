@@ -392,7 +392,11 @@ fluentd監視で中止すべき点
 - buffet_total_queued_size: バッファに保持されているchunkの数
 - retry_count: リトライの回数
 
-
+### 8.1.5 Kubernetesにおけるログの管理
+- 基本的にはDocker composeと同じ
+- どのNodeにどうPodが配置されるかはKubernetesのスケジューラ次第なので、それぞれのコンテナで独自にログを管理するのは難しい
+- Elasticsearch/Kibanaはkube-systemというNamespaceに構築すると良い
+    - kube-systemはコアコンポーネントが含まれており、ログを横断的に集約するのにはkube-systemに配置するのが便利
 
 
 
