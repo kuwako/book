@@ -1,4 +1,8 @@
 # Go言語によるWebアプリケーション開発
+## まとめ
+- GoをWebで作るときの問題などを書いてある
+- あまり多く知ることはない
+
 ## 1: WebSocketを使ったチャットアプリケーション
 - Goのテンプレートはtext/template or html/template
 - 処理を一回だけやる場合 sync.Once が便利
