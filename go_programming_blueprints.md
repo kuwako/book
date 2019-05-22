@@ -38,3 +38,7 @@
 - Ctrl+CはtermChanで補足できる
 
 # 6: REST形式でデータや機能を公開する
+- ドメイン間のリソースの共有にはCORSを使う
+  - Access-Controll-Allow-Originヘッダーに*を入れる
+  - Access-Controll-Expose-HeadersにLocationを指定する
+- main関数はシンプルであるべき
