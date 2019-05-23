@@ -117,7 +117,7 @@ Dockerフレンドリに作れるかどうかが、技術選定の軸になり�
 ## 3.4 永続化データをどう扱うか
 Dockerコンテナ実行中に書き込まれたファイルは、ホスト側にファイル・ディレクトリをマウントしない限りコンテナを破棄したタイミングでディスクから消去される
 
-### 3.4.1 DataVolume 
+### 3.4.1 DataVolume
 Dockerコンテナ内のディレクトリをディスク内に永続化する仕組み
 - docker container run に -v [マウント先] を指定することで実行可能
 - ポータビリティは下がる
@@ -397,7 +397,27 @@ fluentd監視で中止すべき点
 - どのNodeにどうPodが配置されるかはKubernetesのスケジューラ次第なので、それぞれのコンテナで独自にログを管理するのは難しい
 - Elasticsearch/Kibanaはkube-systemというNamespaceに構築すると良い
     - kube-systemはコアコンポーネントが含まれており、ログを横断的に集約するのにはkube-systemに配置するのが便利
+- DaemonSetでfluentdを構築する
+  - DaemonSetはKubernetesクラスタで管理されている全てのNodeに対して、必ず1つ配置されるPodを管理するためのリソース
+  - fluentdのDaemonSetもElasticsearch, Kibana同様にkube-systemに配置される
+- sternを使うと普通にログを見ることもできる
 
+#### Docker/Kubernetesでのロギングの王道
+- アプリケーションのロギングはファイル出力ではなく、全て標準出力する
+- nginx等のミドルウェアのログも全て標準出力できるようにDockerイメージを構築する
+- 標準出力するログは全てJSON形式で出力し、それぞれの属性で検索や集計をしやすくする
+- Kubernetesにおいてはfluent/fluentd-kuberbetes-daemonsetで構成されるPodをDaemonSetで各ホストに配置する
+- Kubernetesのリソースにはラベルを適切に設定することで、ログの検索性を確保する
+
+## 8.2 Dockerホストやデーモンの運用
+### 8.2.2 dockerdのチューニング
+Linux系OSでは/etc/docker/daemon.jsonに記述し、再起動することで反映できる
+- max-concurrent-downloads
+  - docker image pullにおけるイメージダウンロードの並列数
+  - デフォルトは3
+- max-concurrent-uploads
+  - docker image push におけるイメージダウンロードの並列数
+  - デフォルトは5
 
 
 
@@ -450,27 +470,3 @@ TelepresenceはKubernetesクラスターで動いているPodに総方向のネ�
 - 分離：プロキシプロセスだけが環境を変更します。この目標はコンテナのそれとよく似ています。それは独立したプロセス固有の環境です。
 - クロスプラットフォーム：可能であれば、LinuxとmacOSは同じように機能します。 LinuxはmacOSよりはるかに多くの機能（マウントネームスペース、バインドマウント、ネットワークネームスペース）を提供します。
 - 互換性：任意のプログラムで動作します。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
