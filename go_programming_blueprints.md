@@ -42,3 +42,5 @@
   - Access-Controll-Allow-Originヘッダーに*を入れる
   - Access-Controll-Expose-HeadersにLocationを指定する
 - main関数はシンプルであるべき
+
+# 7: ランダムなおすすめを提示するサービス
