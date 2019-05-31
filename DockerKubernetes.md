@@ -420,12 +420,55 @@ Linux系OSでは/etc/docker/daemon.jsonに記述し、再起動することで�
   - デフォルトは5
 
 ## 8.3 障害対応
+### Docker運用での障害対策
 - イメージの運用起因での障害対応
     - 本番環境でlatestでコンテナを実行しており、コンテナオーケストレーションによるコンテナ再起動で最新イメージになり実行される
     - latest以外のバージョン名でタグ付けされているイメージを上書きしてしまった
     - 別のタグをつけて上書きしてしまった
 - イメージのテスト
     - イメージのテストはcontainer-structure-testがよく使われる
+      - Googleが出しているDockerイメージに対するテストフレームワーク
+- ディスク容量の枯渇に注意
+  - docker system prune -a で利用していないイメージやコンテナを一括削除できるのでcronに仕込んでおくと良い
+
+### Kubernetes運用での障害対策
+- Node障害時のKubernetesの挙動
+  - Podをデプロイする際にReplicaSetが自動で配置してくれるのでNodeを気にする必要がなさそうに見えるがそうではない
+  - Nodeがダウンした際にPodがどうなるか
+    - 正常に可動している別のNodeに再配置される(Auto-Healing機能)
+    - ReplicaSetを管理するDeploymentやStatfulSetを利用してPodを作成することが最初の障害対策になる
+- Pod Anti Affinityによる耐障害性の強いPod配置戦略
+  - Auto-Healingは便利だが、replicas=1のときなどは再配置までの間がダウンタイムとなる
+  - Podを複数のNodeに配置できるようにreplicasの数を調整する
+    - replicas=2にしても同じNodeに乗ってしまう可能性はある
+    - これを解決する仕組みがPod AntiAffinity
+      - Deploymentの定義でspec.affinity.podAntiAffinityを設定する
+      - replicas=3でPodが2つの場合、1つのpodはPend状態になり配置されない
+
+### CPUを多く利用するPodをNodeAffinityで隔離する
+- CPUを多く利用するPodをNodeAffinityで隔離する
+  - CPUリソースを多く必要とするPodだけ他のNodeに隔離することで他のPodのパフォーマンスに影響を与えないようにする
+  - Deploymentのspec.affinity.nodeAffinityでPodをどのNodeに配置するか指定できる
+    - 例えばBatchのPodにinstancegroup: batchというラベルをつけておき、NodeのDeployment側でbatchがついているものだけ配置させることができる
+
+### Horizontal Pod Autoscaler(HPA)を利用したPodのオートスケール
+HPAはPodのシステム使用率に応じて、Pod数を自動で増減させるKubernetesリソース
+```yml
+resouce:
+  name: cpu
+  targetAverageUtilization: 40
+```
+のような設定でcpuリソースが40%を上回ったら自動で新しいPodが作成される。ただし、maxReplicasが設定されていた場合それを超えない。
+
+### Cluster Autoscalerを利用したNodeのオートスケール
+- HPAはPodをオートスケールする仕組みだが、PodをスケールしようにもNodeがない場合がある
+- Cluster AutoscalerはGCP/AWS/Azureそれぞれに対応している
+- 最大/最小node数も指定可能
+
+### Helmのリリース履歴を制限する
+Helmでインストール・アップデートを繰り返すとその分だけConfigMapが残り、レスポンスが遅くなったり、デプロイ不可能になる
+- helm initでTillerをデプロイする際にリリース当たりの最大履歴保持数を設定する--history-maxでコントロールする
+
 
 
 
