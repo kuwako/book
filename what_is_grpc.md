@@ -110,3 +110,7 @@ message Activity {
   - Mapに対してrepeatedは使用できない
   - Map内のデータの順序は保持されない
   - ``` <string, Project> project = 3; ```
+
+### RPC
+サービス内に定義するメソッド
+- 引数や戻り値がないRPCを定義する場合、空のメッセージ型としてgoogle.protobuf.Emptyを宣言する
