@@ -436,7 +436,7 @@ Linux系OSでは/etc/docker/daemon.jsonに記述し、再起動することで�
   - Podをデプロイする際にReplicaSetが自動で配置してくれるのでNodeを気にする必要がなさそうに見えるがそうではない
   - Nodeがダウンした際にPodがどうなるか
     - 正常に可動している別のNodeに再配置される(Auto-Healing機能)
-    - ReplicaSetを管理するDeploymentやStatfulSetを利用してPodを作成することが最初の障害対策になる
+    - ReplicaSetを管理するDeploymentやStatefulSetを利用してPodを作成することが最初の障害対策になる
 - Pod Anti Affinityによる耐障害性の強いPod配置戦略
   - Auto-Healingは便利だが、replicas=1のときなどは再配置までの間がダウンタイムとなる
   - Podを複数のNodeに配置できるようにreplicasの数を調整する
@@ -520,8 +520,29 @@ distrolessはOSを含まずに言語にフォーカスしたDockerイメージ�
 - glibcをベースとしている
 - 16MBでAlpineLinuxほどではないが十分な軽さ
 
+# 10章 Dockerの様々な活用方法
+DockerはVagrantの代替となるか
+- 筆者はVagrantの代替としてDockerを使うべきとは考えていない
+- Dockerは完全仮想化ではない
+- Dockerで運用していないアプリケーションはOSの状態に依存していることがほとんど
+  - Dockerは完全なLinuxではないので、何かしら期待をした挙動をしないことが考えられる
+- Vagrant -> Dockerへ載せ替えるならば、本番環境までもDockerへ移行する前提で検証/テストした方が良い  
 
+負荷テスト
+- LOCUSTを使うと簡単に負荷テストができる
 
+# Appendix-A セキュリティ
+## 公開Dockerイメージの安全性
+DockerHubで見るべきポイント
+- pull数やstar数は信用できない
+- OFFICIALに[OK]がついているか
+
+Quay.io
+- DockerHubとは別のレジストリサービス
+- アナリティクスが充実している
+- 無料でも十分使える
+
+## 安全なDockerイメージと運用体制を作る
 
 
 
