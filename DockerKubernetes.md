@@ -568,6 +568,15 @@ Quay.io
     - container内部から外部のS3などにアクセスさせる方法
     - 適切に権限を設定すればセキュアな方法
 
+## Docker開発を支援するツール
+### 独自のDokcerレジストリの構築
+Docker HubやQuay.ioのようなpublicレジストリサービスが利用できない場合がある
+
+- Registry(Docker Distribution)
+    - プライベートレジストリ構築ツール
+    - library/registry
+
+### DockerとCI/CDサービスの連携
 
 
 
