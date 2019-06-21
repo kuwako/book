@@ -114,3 +114,8 @@ message Activity {
 ### RPC
 サービス内に定義するメソッド
 - 引数や戻り値がないRPCを定義する場合、空のメッセージ型としてgoogle.protobuf.Emptyを宣言する
+
+### Empty
+引数や戻り値がないRPCを定義する場合、空のメッセージとしてgoogle.protobuf.Emptyを宣言する
+
+## gRPCの基礎知識
