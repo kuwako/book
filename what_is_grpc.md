@@ -139,3 +139,13 @@ Modules
   - 複数req / 1res
 - 双方向ストリーミングRPC
   - 複数req / 複数res
+
+## gRPCの実践的な機能
+### gRPCのエラー
+- ステータスコード
+    - 問題なければ0を返し、その他の場合はエラー
+- エラーハンドリング
+    - status.FromError関数にerrorを渡すとStatusに変換されて、st.Code()やst.Message()で解析できる
+- タイムアウト
+    - withDeadline（）関数で設定可能
+- gRPCのメタデータ
