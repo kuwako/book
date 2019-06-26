@@ -149,3 +149,9 @@ Modules
 - タイムアウト
     - withDeadline（）関数で設定可能
 - gRPCのメタデータ
+  - クラインアント
+    - metadata.AppendToOutgoingContext()を使用
+  - サーバ
+    - ヘッダかトレーラとして受信可能
+    - 単項RPCならCallOptionとして受信用の変数を渡す
+    - ストリーミングの場合はstreamがもつHeader()とTrailer()で取得できる
