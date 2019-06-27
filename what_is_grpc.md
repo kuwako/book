@@ -150,8 +150,15 @@ Modules
     - withDeadline（）関数で設定可能
 - gRPCのメタデータ
   - クラインアント
-    - metadata.AppendToOutgoingContext()を使用
-  - サーバ
-    - ヘッダかトレーラとして受信可能
-    - 単項RPCならCallOptionとして受信用の変数を渡す
-    - ストリーミングの場合はstreamがもつHeader()とTrailer()で取得できる
+    - 送信方法
+      - metadata.AppendToOutgoingContext()を使用
+    - 受信方法
+      - ヘッダかトレーラとして受信可能
+      - 単項RPCならCallOptionとして受信用の変数を渡す
+      - ストリーミングの場合はstreamがもつHeader()とTrailer()で取得できる
+  - サーバー側
+    - 受信方法
+      - metadata.AppendToOutgoingContext()にcontextを渡すと取得できる
+    - 送信方法
+      - SendHandler(): ヘッダとして送信
+      - SetHandler(): トレーラとして送信
