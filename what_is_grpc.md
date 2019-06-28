@@ -148,17 +148,24 @@ Modules
     - status.FromError関数にerrorを渡すとStatusに変換されて、st.Code()やst.Message()で解析できる
 - タイムアウト
     - withDeadline（）関数で設定可能
-- gRPCのメタデータ
-  - クラインアント
-    - 送信方法
-      - metadata.AppendToOutgoingContext()を使用
-    - 受信方法
-      - ヘッダかトレーラとして受信可能
-      - 単項RPCならCallOptionとして受信用の変数を渡す
-      - ストリーミングの場合はstreamがもつHeader()とTrailer()で取得できる
-  - サーバー側
-    - 受信方法
-      - metadata.AppendToOutgoingContext()にcontextを渡すと取得できる
-    - 送信方法
-      - SendHandler(): ヘッダとして送信
-      - SetHandler(): トレーラとして送信
+
+### gRPCのメタデータ
+- クラインアント
+  - 送信方法
+    - metadata.AppendToOutgoingContext()を使用
+  - 受信方法
+    - ヘッダかトレーラとして受信可能
+    - 単項RPCならCallOptionとして受信用の変数を渡す
+    - ストリーミングの場合はstreamがもつHeader()とTrailer()で取得できる
+- サーバー側
+  - 受信方法
+    - metadata.AppendToOutgoingContext()にcontextを渡すと取得できる
+  - 送信方法
+    - SendHandler(): ヘッダとして送信
+    - SetHandler(): トレーラとして送信
+
+### gRPCのインタセプタ
+インタセプタはクライアントとサーバでRPCの実行前後に任意の処理を挟む仕組み
+- 単項RPCに適用するインタセプタ
+  - クライアント: UnaryCLientInterceptor
+  - サーバ: UnaryServerInterceptor
