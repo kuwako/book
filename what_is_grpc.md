@@ -167,5 +167,11 @@ Modules
 ### gRPCのインタセプタ
 インタセプタはクライアントとサーバでRPCの実行前後に任意の処理を挟む仕組み
 - 単項RPCに適用するインタセプタ
-  - クライアント: UnaryCLientInterceptor
+  - クライアント: UnaryClientInterceptor
   - サーバ: UnaryServerInterceptor
+- ストリーミングRPCに適用するインタセプタ
+  - クライアント側: StreamClientInterceptor
+  - サーバ側: StreamServerInterceptor
+  - どちらもストリーミングRPCが呼び出されるタイミングで一度だけ実行される
+
+## タスク管理マイクロサービスの設計
