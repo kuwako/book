@@ -175,3 +175,6 @@ Modules
   - どちらもストリーミングRPCが呼び出されるタイミングで一度だけ実行される
 
 ## タスク管理マイクロサービスの設計
+- 各サービスのインタフェースを定義する
+- 各サービスのコードを生成する
+  - ``` protc -I=proto --go_out=plugins=grpc,paths=source_relative:./proto prot/activity/acitivity.proto ```
