@@ -178,3 +178,6 @@ Modules
 - 各サービスのインタフェースを定義する
 - 各サービスのコードを生成する
   - ``` protc -I=proto --go_out=plugins=grpc,paths=source_relative:./proto prot/activity/acitivity.proto ```
+
+## タスク管理マイクロサービスの実装
+エンドポイントとメソッドのマッピングはhttp.HundlerFunc型のメソッドを紐付ける
