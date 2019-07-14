@@ -31,3 +31,10 @@ Web+DB 110
     - canEdit -> editable のように1語にできる場合もある
   - スペリング
     - スペルミスに注意
+- 参考
+  - Schema.org
+    - Google,MS,Yahoo,Yandexによって作られた語彙基盤(用語集)
+  - Google画像検索
+    - 調べたい単語で画像検索してイメージと合っているか確認できる
+    - "An expression which I'm not confident about"のように二重引用符でくくって検索すると文がまるごと検索される
+      - 検索ヒット数が少ない場合、一般的な用語でない可能性がある
